@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.exemple</groupId>
+    <artifactId>calculatrice-spring-cloud</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <!-- pom : ce projet ne contient pas de code, il regroupe les modules -->
+    <packaging>pom</packaging>
+    <!-- Un module par microservice : decommentez chaque ligne -->
+    <!-- a l'etape indiquee, puis rechargez Maven -->
+    <modules>
+        <module>eureka-service</module>  <!-- etape B.1 -->
+         <module>calcul-service</module>  <!-- etape C.0 -->
+        <module>historique-service</module>  <!-- etape C.0 -->
+        <module>gateway-service</module>  <!-- etape E.1 -->
+    </modules>
+</project>
