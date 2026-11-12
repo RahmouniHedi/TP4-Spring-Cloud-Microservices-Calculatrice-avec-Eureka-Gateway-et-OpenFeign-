@@ -9,31 +9,31 @@ spring:
       server:
         webflux:
           # Routes statiques (etapes E.2 / E.3 / E.4)
-          # routes:
-          #   - id: route-calcul
-          #     uri: lb://CALCUL-SERVICE
-          #     predicates:
-          #       - Path=/calcul/**
-          #   - id: route-historique
-          #     uri: lb://HISTORIQUE-SERVICE
-          #     predicates:
-          #       - Path=/operations/**
-          #   - id: doc-calcul
-          #     uri: lb://CALCUL-SERVICE
-          #     predicates:
-          #       - Path=/docs/calcul
-          #     filters:
-          #       - SetPath=/v3/api-docs
-          #   - id: doc-historique
-          #     uri: lb://HISTORIQUE-SERVICE
-          #     predicates:
-          #       - Path=/docs/historique
-          #     filters:
-          #       - SetPath=/v3/api-docs
+          routes:
+            - id: route-calcul
+              uri: lb://CALCUL-SERVICE
+              predicates:
+                - Path=/calcul/**
+            - id: route-historique
+              uri: lb://HISTORIQUE-SERVICE
+              predicates:
+                - Path=/operations/**
+            - id: doc-calcul
+              uri: lb://CALCUL-SERVICE
+              predicates:
+                - Path=/docs/calcul
+              filters:
+                - SetPath=/v3/api-docs
+            - id: doc-historique
+              uri: lb://HISTORIQUE-SERVICE
+              predicates:
+                - Path=/docs/historique
+              filters:
+                - SetPath=/v3/api-docs
           discovery:
             locator:
               # Une route par service present dans l'annuaire (etape E.5)
-              enabled: true
+              enabled: false
               # Noms Eureka en majuscules ; acceptes en minuscules dans l'URI
               lower-case-service-id: true
       loadbalancer:
@@ -54,18 +54,18 @@ eureka:
 management:
   endpoint:
     gateway:
-      access: read-only
+      access: unrestricted
   endpoints:
     web:
       exposure:
-        include: "*"
+        include: gateway,health,info
 
 # Swagger UI de la passerelle : http://localhost:8888/swagger-ui.html
 springdoc:
   swagger-ui:
-    # Routes dynamiques : chaque description est lue par la route du service (etape E.5)
+    # Routes statiques : chaque description est lue par la route specifique (etapes E.2 / E.4)
     urls:
       - name: calcul-service
-        url: /calcul-service/v3/api-docs
+        url: /docs/calcul
       - name: historique-service
-        url: /historique-service/v3/api-docs
+        url: /docs/historique
