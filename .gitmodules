@@ -1,0 +1,3 @@
+[submodule "calcul-service"]
+	path = calcul-service
+	url = https://github.com/RahmouniHedi/TP3-REST-Microservices-Calculatrice-avec-Spring-Boot.git
