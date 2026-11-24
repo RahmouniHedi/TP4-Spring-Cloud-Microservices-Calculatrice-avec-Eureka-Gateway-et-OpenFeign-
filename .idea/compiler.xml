@@ -17,6 +17,7 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.48/lombok-1.18.48.jar" />
         </processorPath>
+        <module name="calcul-service" />
         <module name="historique-service" />
       </profile>
     </annotationProcessing>
